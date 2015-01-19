@@ -62,6 +62,7 @@ ASSIMP_API unsigned int aiGetCompileFlags ()	{
 	return flags;
 }
 
+#ifndef ANDROID
 // include current build revision, which is even updated from time to time -- :-)
 #include "revision.h"
 
@@ -70,6 +71,12 @@ ASSIMP_API unsigned int aiGetVersionRevision ()
 {
     return GitVersion;
 }
+#else
+ASSIMP_API unsigned int aiGetVersionRevision ()
+{
+    return 0;
+}
+#endif
 
 // ------------------------------------------------------------------------------------------------
 ASSIMP_API aiScene::aiScene()
