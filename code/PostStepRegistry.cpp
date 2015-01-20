@@ -122,6 +122,10 @@ corresponding preprocessor flag to selectively disable steps.
 #	include "DeboneProcess.h"
 #endif
 
+#ifndef ASSIMP_BUILD_NO_SCALETOUNITBOX_PROCESS
+# include "ScaleToUnitBoxProcess.h"
+#endif
+
 namespace Assimp {
 
 // ------------------------------------------------------------------------------------------------
@@ -189,6 +193,9 @@ void GetPostProcessingStepInstanceList(std::vector< BaseProcess* >& out)
 #endif
 #if (!defined ASSIMP_BUILD_NO_GENFACENORMALS_PROCESS)
 	out.push_back( new GenFaceNormalsProcess());
+#endif
+#if (!defined ASSIMP_BUILD_NO_SCALETOUNITBOX_PROCESS)
+	out.push_back( new ScaleToUnitBoxProcess());
 #endif
 
 	// .........................................................................
